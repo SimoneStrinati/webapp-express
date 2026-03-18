@@ -1,10 +1,11 @@
 const mysql = require("mysql2");
 
 const dbConfiguration = {
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "movies_db"
+    host: process.env.DB_HOST || "localhost", // ||"localhost" è un dato di default in caso il file "env" non esista
+    port: process.env.DB_PORT || 3306, // || 3306 è un dato di default in caso il file "env" non esista
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 }
 
 function onDatabaseConnection(error) {

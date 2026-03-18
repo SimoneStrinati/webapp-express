@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express(); //express invocato usando variabile app
-const port = 3000;
 const movieRouter = require("./routers/movieRouter");
 
 const errorHandler = require("./middlewares/errorHandlers");
@@ -20,6 +19,6 @@ app.use("/api/movies", movieRouter); //inserire "/api/qualcosa" è una convenzio
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(port, () => {
-    console.log(`Express avviato correttamente su http://localhost:${port}/;`)
+app.listen(process.env.APP_PORT, () => {
+    console.log(`Express avviato correttamente su http://localhost:${process.env.APP_PORT}/;`)
 });
