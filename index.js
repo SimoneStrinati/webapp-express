@@ -1,10 +1,13 @@
 const express = require("express");
 const app = express(); //express invocato usando variabile app
+const cors = require("cors");
 const movieRouter = require("./routers/movieRouter");
 
 const errorHandler = require("./middlewares/errorHandlers");
 const notFound = require("./middlewares/notFound");
 
+app.use(cors({ origine: process.env.FE_URL })); /*cors è un middleware che permette di gestire le richieste da domini diversi,
+                                                 in questo caso il frontend che gira su un dominio diverso da quello del backend */
 app.use(express.static("public"));
 
 app.use(express.json());
